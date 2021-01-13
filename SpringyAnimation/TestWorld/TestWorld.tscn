@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Example/Example.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TorsoPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TorsoPos:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TorsoPos:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 1 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TorsoPos:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, 40.0, 15.0 ]
+}
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="Example" parent="." instance=ExtResource( 1 )]
+position = Vector2( 168, 176 )
+
+[node name="TorsoPos" parent="Example/Body" index="0"]
+position = Vector2( 0, -0.796404 )
+
+[node name="ExampleHeadSprite" parent="Example/Body/TorsoPos/HeadPos" index="0"]
+visible = false
+
+[node name="ExampleEyeSprite" parent="Example/Body/TorsoPos/HeadPos/LeftEyePos" index="0"]
+visible = false
+
+[node name="ExampleEyeSprite" parent="Example/Body/TorsoPos/HeadPos/RightEyePos" index="0"]
+visible = false
+
+[node name="ExampleHandSprite" parent="Example/Body/TorsoPos/RightHandPos" index="0"]
+visible = false
+
+[node name="ExampleHandSprite" parent="Example/Body/TorsoPos/LeftHandPos" index="0"]
+visible = false
+
+[node name="AnimationPlayer" parent="Example/Body" index="1"]
+autoplay = "Idle"
+
+[node name="Head" parent="Example/SpringSprites" index="0"]
+position = Vector2( 0, -43.1856 )
+
+[node name="LeftEye" parent="Example/SpringSprites" index="1"]
+position = Vector2( -4, -43.1856 )
+
+[node name="RightEye" parent="Example/SpringSprites" index="2"]
+position = Vector2( 8, -47.1856 )
+
+[node name="LeftHand" parent="Example/SpringSprites" index="3"]
+position = Vector2( -16, -3.18562 )
+
+[node name="RightHand" parent="Example/SpringSprites" index="4"]
+position = Vector2( 16, -3.18562 )
+
+[node name="Example2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, 176 )
+
+[node name="TorsoPos" parent="Example2/Body" index="0"]
+position = Vector2( 0, -1.20616 )
+
+[node name="AnimationPlayer" parent="Example2/Body" index="1"]
+autoplay = "Idle"
+anims/Idle = SubResource( 1 )
+anims/Run = SubResource( 2 )
+
+[node name="Head" parent="Example2/SpringSprites" index="0"]
+visible = false
+position = Vector2( 0, -44.8246 )
+
+[node name="LeftEye" parent="Example2/SpringSprites" index="1"]
+visible = false
+position = Vector2( -4, -44.8246 )
+
+[node name="RightEye" parent="Example2/SpringSprites" index="2"]
+visible = false
+position = Vector2( 8, -48.8246 )
+
+[node name="LeftHand" parent="Example2/SpringSprites" index="3"]
+visible = false
+position = Vector2( -16, -4.82465 )
+
+[node name="RightHand" parent="Example2/SpringSprites" index="4"]
+visible = false
+position = Vector2( 16, -4.82465 )
+
+[editable path="Example"]
+
+[editable path="Example2"]
